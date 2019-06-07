@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d689ed40-90fb-48a2-9419-80e79f111675" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="file-1211Flow" doc:id="f24d5003-4a9a-4bca-a814-5b969fd739f8" >
+		<http:listener doc:name="Listener" doc:id="ce056c01-d56c-4d5e-a1e2-d83974b34441" config-ref="HTTP_Listener_config" path="/file" allowedMethods="GET"/>
+		<file:move doc:name="Move" doc:id="39bdb943-b1e7-4a34-ab19-f364584a8d9b" sourcePath="D:\workspace-4.0\file-1211\src\main\resources\input" targetPath="D:\workspace-4.0\file-1211\src\main\resources\output"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f18139a8-c16e-4a99-9a6e-06630630a6a8" message='#["Transffered successfully"]'/>
+	</flow>
+</mule>
